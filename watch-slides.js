@@ -7,7 +7,8 @@ const outputFile = path.join(__dirname, 'index.html');
 function buildIndex() {
   let files = [];
   if (fs.existsSync(slidesDir)) {
-    files = fs.readdirSync(slidesDir).filter(f => f.endsWith('.md'));
+    //files = fs.readdirSync(slidesDir).filter(f => f.endsWith('.md'));
+    files = fs.readdirSync(slidesDir).filter(file => !file.startsWith('.') && file.endsWith('.md'))
   }
 
   const htmlContent = `<!DOCTYPE html>
