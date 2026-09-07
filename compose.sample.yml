@@ -1,15 +1,25 @@
-# Compose para servidor local
 services:
   # Servidor Web (Nginx / Reveal.js)
   revealjs:
     image: cloudogu/reveal.js
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
     volumes:
       - ./slides:/reveal/slides
       - ./index.html:/reveal/index.html
       - ./viewer.html:/reveal/viewer.html
       - ./css:/reveal/css
+    networks:
+      - proxy_inverso
+      - monitorizacion
+    restart: always
+    labels:
+      caddy:
+        presentaciones.dominio.es
+        presentaciones.dominio.duckdns.org
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+      caddy.reverse_proxy: "{{upstreams}}"
+
 
   # Contenedor dedicado al Watcher en Node.js
   watcher:
@@ -19,3 +29,10 @@ services:
       - ./:/app
     command: node watch-slides.js
     restart: always
+
+
+networks:
+   proxy_inverso:
+      external: true
+   monitorizacion:
+      external: true
