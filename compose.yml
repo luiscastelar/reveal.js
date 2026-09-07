@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  revealjs:
+    image: cloudogu/reveal.js
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./slides:/reveal/slides
+      - ./index.html:/reveal/index.html
+      - ./viewer.html:/reveal/viewer.html
+#    command: sh -c "node watch-slides.js & npm start"

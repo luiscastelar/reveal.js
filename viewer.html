@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides" id="slides-container"></div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slide = params.get('slide');
+
+    if (slide) {
+      const section = document.createElement('section');
+      section.setAttribute('data-markdown', `slides/${slide}`);
+      section.setAttribute('data-separator', '^---');
+      section.setAttribute('data-separator-vertical', '^--');
+      document.getElementById('slides-container').appendChild(section);
+    }
+
+    Reveal.initialize({
+      plugins: [ RevealMarkdown, RevealHighlight ]
+    });
+  </script>
+</body>
+</html>
