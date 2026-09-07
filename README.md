@@ -1,11 +1,10 @@
 # Presentaciones con reveal.js
 
 ## Actual
-Debemos ejecutar a mano (con `node watch-slides.js`) para actualiar el menú de presentaciones disponibles.
+Levantamos con `compose up -d` y lo tenemos disponible.
 
-Luego podemos acceder a ellas levantanto del contendero con `compose up -d`
+Tiene un menú autogenerado con todas las presentaciones disponibles en `./slides`
 
-## ToDo's:
-1. Añadir un contenedor al `compose.yml` que integre ambos servicios
-2. Modificar el css para que el tamaño y estilo sea más adecuado
-3. Modificar el viewer para los saltos verticales
+Los markdown ocultos NO apareceran en la lista de presentaciones.
+
+Los directorios se transforman en "categorias" de presentaciones
