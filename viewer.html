@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentación</title>
   <link rel="stylesheet" href="dist/reset.css">
   <link rel="stylesheet" href="dist/reveal.css">
-  <link rel="stylesheet" href="dist/theme/black.css">
+  <link rel="stylesheet" href="dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="plugin/highlight/monokai.css">
-
-  <!-- Hoja de estilos personalizada -->
-  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="css/custom.css?v=1">
 </head>
 <body>
   <div class="reveal">
@@ -19,22 +19,32 @@
   <script src="plugin/markdown/markdown.js"></script>
   <script src="plugin/highlight/highlight.js"></script>
   <script src="plugin/notes/notes.js"></script>
+
   <script>
     const params = new URLSearchParams(window.location.search);
-    const slide = params.get('slide');
+    const slideFile = params.get('slide');
 
-    if (slide) {
+    if (slideFile) {
+      const container = document.getElementById('slides-container');
       const section = document.createElement('section');
-      section.setAttribute('data-markdown', `slides/${slide}`);
+
+      section.setAttribute('data-markdown', `slides/${slideFile}`);
       section.setAttribute('data-separator', '^---');
       section.setAttribute('data-separator-vertical', '^--|^\r?\n\r?\n');
       section.setAttribute('data-separator-notes', '^Note:');
-      document.getElementById('slides-container').appendChild(section);
-    }
 
-    Reveal.initialize({
-      plugins: [ RevealMarkdown, RevealHighlight ]
-    });
+      container.appendChild(section);
+
+      // Inicialización con atajos explícitos
+      Reveal.initialize({
+        keyboard: true,
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    } else {
+      document.getElementById('slides-container').innerHTML =
+        '<section><h2>Error: No se ha especificado ningún archivo Markdown.</h2></section>';
+      Reveal.initialize();
+    }
   </script>
 </body>
 </html>
