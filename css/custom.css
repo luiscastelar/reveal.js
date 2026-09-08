@@ -1,13 +1,13 @@
 /* Custom Styles para la Galería e Interfaz */
 :root{
   /* Tamaño de los títulos principales (# en Markdown) */
-  --r-heading1-size: 1.8em;
+  --r-heading1-size: 1.5em;
 
   /* Tamaño de los subtítulos (## en Markdown) */
-  --r-heading2-size: 1.4em;
+  --r-heading2-size: 1.3em;
 
   /* Tamaño de los títulos de nivel 3 (### en Markdown) */
-  --r-heading3-size: 1.2em;
+  --r-heading3-size: 1.1em;
 }
 
 li, p, table * {
