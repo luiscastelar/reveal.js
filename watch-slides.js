@@ -10,7 +10,7 @@ function getMarkdownFiles(dir, baseDir = dir) {
 
   const list = fs.readdirSync(dir);
   list.forEach(file => {
-    if (file.startsWith('.')) return;
+    if (file.startsWith('o.')) return;
 
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
