@@ -10,7 +10,10 @@ function getMarkdownFiles(dir, baseDir = dir) {
 
   const list = fs.readdirSync(dir);
   list.forEach(file => {
-    if (file.startsWith('o.')) return;
+    if (file.startsWith('o.') || file.startsWith('O.')){
+      console.log(`File ${file} excluido`);
+      return;
+    }
 
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
